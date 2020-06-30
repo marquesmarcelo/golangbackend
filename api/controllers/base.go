@@ -65,8 +65,8 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 }
 
 func (server *Server) Run(addr string) {
-	appMode := GetValue(os.Getenv("APP_MODE"), "Variavel de Ambiente Invalida")
-	appVersion := GetValue(os.Getenv("APP_VERSION"), "Variavel de Ambiente Invalida")
+	appMode := functions.GetValue(os.Getenv("APP_MODE"), "Variavel de Ambiente Invalida")
+	appVersion := functions.GetValue(os.Getenv("APP_VERSION"), "Variavel de Ambiente Invalida")
 
 	fmt.Println(fmt.Sprintf("Servidor %s versão %s escutando na porta %s!", appMode, appVersion, addr))
 
