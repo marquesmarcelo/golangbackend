@@ -13,6 +13,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
 	_ "github.com/jinzhu/gorm/dialects/sqlite"   // sqlite database driver
 	"github.com/marquesmarcelo/golangbackend/api/models"
+	"github.com/marquesmarcelo/golangbackend/api/utils/functions"
 )
 
 type Server struct {

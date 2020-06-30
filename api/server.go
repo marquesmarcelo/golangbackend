@@ -8,6 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/marquesmarcelo/golangbackend/api/controllers"
 	"github.com/marquesmarcelo/golangbackend/api/seed"
+	"github.com/marquesmarcelo/golangbackend/api/utils/functions"
 )
 
 var server = controllers.Server{}
