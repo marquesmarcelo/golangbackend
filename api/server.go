@@ -22,7 +22,7 @@ func init() {
 
 func Run() {
 
-	port := functions.GetValue(os.Getenv("SERVING_PORT"), ":8080")
+	port := functions.GetValue("SERVING_PORT", ":8080")
 
 	var err error
 	err = godotenv.Load()

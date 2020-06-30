@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
@@ -65,8 +64,8 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 }
 
 func (server *Server) Run(addr string) {
-	appMode := functions.GetValue(os.Getenv("APP_MODE"), "Variavel de Ambiente Invalida")
-	appVersion := functions.GetValue(os.Getenv("APP_VERSION"), "Variavel de Ambiente Invalida")
+	appMode := functions.GetValue("APP_MODE", "Invalido")
+	appVersion := functions.GetValue("APP_VERSION", "Invalido")
 
 	fmt.Println(fmt.Sprintf("Servidor %s versão %s escutando na porta %s!", appMode, appVersion, addr))
 
