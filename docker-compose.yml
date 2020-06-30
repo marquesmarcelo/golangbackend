@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+# Containder de producao.
+  backend-prod:
+    hostname: backend-prod
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    environment:
+      SERVING_PORT: ":8080"
+      APP_MODE: "Produção"
+      APP_VERSION: "0.1"
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres # Este serviço depende do Banco de Dados Postgres
+    networks:
+      - fullstack
+        
+# Container de desenvolvimento. Executando em modo debug com opcao de live-reloading para qualquer atualizacao de arquivo.
+  backend-dev:
+    hostname: backend-dev
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      APP_VERSION: "0.1"
+      APP_MODE: "Desenvolvimento"
+      SERVING_PORT: ":8081"  # Example ENV variable
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8081:8081"
+# Container de banco de dados para producao
+  postgres:
+    image: postgres:latest
+    container_name: full_db
+    environment:
+      - POSTGRES_USER=aplicacao
+      - POSTGRES_PASSWORD=aplicacao
+      - POSTGRES_DB=backend
+      - DATABASE_HOST=localhost
+    ports:
+      - '5432:5432'
+    volumes:
+      - database_postgres:/var/lib/postgresql/data
+    networks:
+      - fullstack
+volumes:
+  database_postgres:
+networks:
+  fullstack:
