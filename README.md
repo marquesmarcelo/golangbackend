@@ -17,3 +17,5 @@ Deverá ser execute o comando para gerar a produção sempre que uma nova versã
 3 - Ativar o protocolo gRPC
 
 4 - Construir um frontend que consuma serviços via gRPC
+
+Baseado no código de github.com/victorsteven/fullstack

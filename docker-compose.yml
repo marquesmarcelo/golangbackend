@@ -46,7 +46,7 @@ services:
     container_name: full_db
     environment:
       - POSTGRES_USER=aplicacao
-      - POSTGRES_PASSWORD=aplicacao
+      - POSTGRES_PASSWORD=senha
       - POSTGRES_DB=backend
       - DATABASE_HOST=localhost
     ports:
